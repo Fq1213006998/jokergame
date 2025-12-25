@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽纸牌游戏</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Minecraft风格日志显示框 -->
+        <div id="minecraft-log">
+            <div id="log-title" class="log-title">日志</div>
+            <div id="log-content" class="log-content"></div>
+        </div>
+        <!-- 开始界面 -->
+        <div id="start-screen" class="screen active">
+            <h1>抽纸牌游戏</h1>
+            <p>人-AI对战</p>
+            <p>规则：平分54张扑克，双方先打出手中所有成对的牌，然后玩家点击AI的牌来抽取，AI自动抽取玩家的牌。每次抽取后检查是否形成对子并打出，首先打空手牌的玩家获胜。</p>
+            <div class="difficulty-selection">
+                <h3>选择难度</h3>
+                <label>
+                    <input type="radio" name="difficulty" value="easy" checked>
+                    <span>简单</span>
+                </label>
+                <label>
+                    <input type="radio" name="difficulty" value="medium">
+                    <span>中等</span>
+                </label>
+                <label>
+                    <input type="radio" name="difficulty" value="hard">
+                    <span>困难</span>
+                </label>
+            </div>
+            <button id="start-btn">开始游戏</button>
+        </div>
+
+        <!-- 战斗界面 -->
+        <div id="battle-screen" class="screen">
+            <!-- AI区域 -->
+            <div id="ai-area" class="player-area">
+                <div class="player-info">
+                    <h2>AI</h2>
+                    <p>手牌数量: <span id="ai-card-count">27</span></p>
+                </div>
+                <div id="ai-hand" class="card-area">
+                    <!-- AI手牌将通过JavaScript动态生成 -->
+                </div>
+            </div>
+
+            <!-- 战场区域 -->
+            <div id="battlefield" class="battlefield">
+                <div id="ai-discard" class="discard-area">
+                    <h3>AI打出的牌</h3>
+                    <div id="ai-discard-pile" class="discard-pile"></div>
+                </div>
+                <div id="player-discard" class="discard-area">
+                    <h3>玩家打出的牌</h3>
+                    <div id="player-discard-pile" class="discard-pile"></div>
+                </div>
+                <div id="draw-info" class="draw-info">
+                    <!-- 抽取卡牌信息将通过JavaScript动态生成 -->
+                </div>
+            </div>
+
+            <!-- 玩家区域 -->
+            <div id="player-area" class="player-area">
+                <div class="player-info">
+                    <h2>玩家</h2>
+                    <p>手牌数量: <span id="player-card-count">27</span></p>
+                    <p id="turn-indicator">轮到你抽取AI卡牌</p>
+                </div>
+                <div id="player-hand" class="card-area">
+                    <!-- 玩家手牌将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 结算界面 -->
+        <div id="result-screen" class="screen">
+            <h1 id="result-title">游戏结束</h1>
+            <p id="result-text">胜负已分</p>
+            <button id="restart-btn">重新开始</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
